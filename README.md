@@ -1,3 +1,4 @@
+<pre>
 [페이지 목록]
 index.jsp : 첫화면
 register.jsp : 상품 등록 화면
@@ -27,3 +28,4 @@ modify.jsp : 상품 수정 화면
 세부내용 : <input>
 수정 : <button> -> modify.jsp
 삭제 : <button> -> list.jsp
+</pre>
