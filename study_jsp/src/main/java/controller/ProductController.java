@@ -43,8 +43,15 @@ public class ProductController extends HttpServlet {
 		System.out.println("* ProductController > service() > uri : " + uri);
 		System.out.println("* ProductController > service() > context : " + context);
 		
-		// 객체를 내야하는 목적지 주소
-		String destPage = "";
+		ProductVO pvo;
+		String destPage = "";	// 객체를 내야하는 목적지 주소
+		String pname;
+		String madeby;
+		int pno;
+		int price;
+		int isOk;
+		
+		
 		
 		// 오는 요청에 대한 분기 처리
 		switch (uri) {
@@ -58,10 +65,10 @@ public class ProductController extends HttpServlet {
 			// service에게 가져온 데이터를 객체화 하여 DB에 저장해달라고 요청
 			
 			// 1. 객체를 생성
-			String pname = req.getParameter("pname");
-			int price = Integer.parseInt(req.getParameter("price"));	// req.getParameter()로 가져온 값은 String 형식, 형변환 필요
-			String madeby = req.getParameter("madeby");
-			ProductVO pvo = new ProductVO(pname, price, madeby);
+			pname = req.getParameter("pname");
+			price = Integer.parseInt(req.getParameter("price"));	// req.getParameter()로 가져온 값은 String 형식, 형변환 필요
+			madeby = req.getParameter("madeby");
+			pvo = new ProductVO(pname, price, madeby);
 			/* 생성자 없을 경우
 			 * ProductVO pvo = new ProductVO();
 			 * pvo.setPname(pname);
@@ -70,20 +77,20 @@ public class ProductController extends HttpServlet {
 			 */
 			
 			// 2. service에게 객체주고 요청
-			int isOk = svc.register(pvo);
+			isOk = svc.register(pvo);
 			System.out.println("* 상품 등록 : " + (isOk > 0 ? "성공" : "실패"));
-			destPage = "/index.jsp";			
+			destPage = "list.pd";			
 			
 			break;
 		case "/list.pd":
 			List<ProductVO> list = svc.list();
 			req.setAttribute("list", list);
 			System.out.println("* 상품 리스트");
-			destPage = "/list.jsp";
+			destPage = "list.jsp";
 			
 			break;
 		case "/detail.pd" :
-			int pno = Integer.parseInt(req.getParameter("pno"));
+			pno = Integer.parseInt(req.getParameter("pno"));
 			
 			pvo = svc.detail(pno);
 			req.setAttribute("pvo", pvo);
@@ -116,7 +123,7 @@ public class ProductController extends HttpServlet {
 			isOk = svc.remove(pno);
 			System.out.println("* 상품 삭제 : " + (isOk > 0 ? "성공" : "실패"));
 			
-			destPage = "/list.pd";
+			destPage = "list.pd";
 			
 			break;			
 		}

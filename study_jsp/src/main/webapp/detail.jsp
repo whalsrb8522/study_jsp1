@@ -37,5 +37,6 @@
 	
 	<a href="modify.pd?pno=${pvo.pno }"><button>수정</button></a>	
 	<a href="remove.pd?pno=${pvo.pno }"><button>삭제</button></a>
+	<a href="list.pd"><button>목록 페이지로 이동</button></a>
 </body>
 </html>

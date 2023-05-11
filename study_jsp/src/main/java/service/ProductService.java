@@ -37,7 +37,6 @@ public class ProductService implements Service {
 
 	@Override
 	public int remove(int pno) {
-		// TODO Auto-generated method stub
 		return dao.delete(pno);
 	}
 
