@@ -1,3 +1,5 @@
+<!-- view -> controller -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>
-		Hello World!
-	</h1>
+	<h1>Hello World!</h1>
+	
+	<a href="register.pd">상품 등록 페이지로 이동</a> <br>
+	<a href="list.pd">상품 목록 페이지로 이동</a>
 </body>
 </html>
